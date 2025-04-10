@@ -1,0 +1,473 @@
+---
+title: "Getting Started with R"
+subtitle: "Execute Simple Commands"
+author: "Your Name"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  revealjs::revealjs_presentation:
+    theme: simple
+    highlight: default
+    transition: slide
+    center: true
+    css: modern-reveal-css.css
+    self_contained: false
+    lib_dir: libs
+    reveal_plugins: ["notes", "search", "zoom"]
+    reveal_options:
+      slideNumber: true
+      previewLinks: false
+      hash: true
+      height: 900
+      width: 1600
+      margin: 0.1
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width = 10, fig.height = 6, fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+# Getting Started with R {.title-slide data-background-gradient="linear-gradient(135deg, #3a0ca3, #4361ee)"}
+
+## Execute Simple Commands
+
+### For New R Users
+
+---
+
+## R as a Calculator
+
+R can be used as a powerful calculator. Type an expression and hit Enter.
+
+```{r}
+# Addition
+5 + 3
+
+# Subtraction
+10 - 7
+
+# Multiplication
+4 * 6
+
+# Division
+15 / 3
+
+# Exponents (Power)
+2^3  # 2 raised to the power of 3
+```
+
+---
+
+## Order of Operations
+
+R follows the standard mathematical order of operations (PEMDAS):
+- **P**arentheses
+- **E**xponents
+- **M**ultiplication and **D**ivision (from left to right)
+- **A**ddition and **S**ubtraction (from left to right)
+
+```{r}
+# Without parentheses
+3 + 4 * 2
+
+# With parentheses to change order
+(3 + 4) * 2
+```
+
+---
+
+## More Mathematical Operations
+
+```{r}
+# Square root
+sqrt(16)
+
+# Absolute value
+abs(-42)
+
+# Logarithms
+log(10)        # Natural logarithm (base e)
+log10(100)     # Base 10 logarithm
+log(8, base=2) # Base 2 logarithm
+
+# Trigonometric functions (in radians)
+sin(pi/2)
+cos(pi)
+tan(pi/4)
+```
+
+---
+
+## Variables
+
+Variables let you store values for later use. Use the assignment operator `<-` to create variables.
+
+```{r}
+# Assign a value to a variable
+x <- 10
+y <- 5
+
+# Use variables in calculations
+x + y
+x * y
+x / y
+
+# You can also use the = operator for assignment, but <- is preferred
+z = 15
+z
+```
+
+<div class="tip">
+<strong>Tip:</strong> Use <code>&lt;-</code> for assignment and <code>=</code> for specifying function arguments.
+</div>
+
+---
+
+## Variable Naming Rules
+
+Good variable names make your code more readable and easier to understand.
+
+### Rules for variable names:
+- Must start with a letter
+- Can contain letters, numbers, underscore (_), and period (.)
+- Cannot contain spaces or special characters
+- Are case-sensitive (age ≠ Age)
+
+```{r}
+# Valid variable names
+my_variable <- 10
+myVariable <- 20
+my.variable <- 30
+variable1 <- 40
+
+# Print a variable's value
+my_variable
+```
+
+---
+
+## Variable Naming Conventions
+
+While many naming styles are valid, consistency is key. Choose one style and stick with it.
+
+```{r}
+# Common naming styles:
+
+# snake_case (recommended for R)
+first_name <- "John"
+
+# camelCase
+firstName <- "John"
+
+# PascalCase 
+FirstName <- "John"
+
+# dot.case (less common in modern R)
+first.name <- "John"
+```
+
+<div class="note">
+<strong>Note:</strong> The tidyverse style guide recommends snake_case for variable and function names.
+</div>
+
+---
+
+## Data Types: Numeric
+
+R has several data types for representing different kinds of values.
+
+### Numeric (includes both integers and decimal numbers)
+
+```{r}
+# Integers and doubles are both numeric
+a <- 10    # This is actually stored as a double
+b <- 10.5
+
+# Check the type
+class(a)
+class(b)
+
+# Force an integer with L suffix
+c <- 10L
+class(c)
+```
+
+---
+
+## Data Types: Character
+
+### Character (for text/string data)
+
+```{r}
+# Create character strings with quotes
+name <- "Alice"
+greeting <- 'Hello, world!'
+
+# Check the type
+class(name)
+
+# Combining strings
+paste("Hello", "there")
+paste0("R", "Studio") # paste0 doesn't add spaces
+
+# String length
+nchar("Programming")
+```
+
+---
+
+## Data Types: Logical
+
+### Logical (Boolean values: TRUE or FALSE)
+
+```{r}
+# Create logical values
+is_correct <- TRUE
+has_errors <- FALSE
+
+# Check the type
+class(is_correct)
+
+# Logical operations
+TRUE & TRUE   # AND: both must be TRUE
+TRUE | FALSE  # OR: at least one must be TRUE
+!TRUE         # NOT: inverts the value
+```
+
+---
+
+## Comparisons
+
+Comparison operators return logical values (TRUE or FALSE).
+
+```{r}
+# Equal to
+5 == 5
+
+# Not equal to
+5 != 3
+
+# Greater than
+10 > 5
+
+# Less than
+3 < 7
+
+# Greater than or equal to
+5 >= 5
+
+# Less than or equal to
+4 <= 10
+```
+
+---
+
+## Basic Data Structures: Vectors
+
+Vectors are one-dimensional collections of values of the same type.
+
+```{r}
+# Create a vector with c()
+numbers <- c(2, 4, 6, 8, 10)
+fruits <- c("apple", "banana", "cherry")
+logicals <- c(TRUE, FALSE, TRUE, TRUE)
+
+# Check the type
+class(numbers)
+class(fruits)
+
+# Get the length
+length(numbers)
+
+# Access elements by position (R uses 1-based indexing)
+numbers[1]      # First element
+fruits[2]       # Second element
+numbers[c(1,3)] # First and third elements
+```
+
+---
+
+## Operating on Vectors
+
+Operations on vectors are applied to each element.
+
+```{r}
+# Create a vector
+vec <- c(10, 20, 30, 40, 50)
+
+# Add a value to each element
+vec + 5
+
+# Multiply each element
+vec * 2
+
+# Operations between vectors (element-wise)
+vec1 <- c(1, 2, 3)
+vec2 <- c(10, 20, 30)
+vec1 + vec2
+vec1 * vec2
+```
+
+---
+
+## Sequences and Repetition
+
+### Creating sequences of numbers:
+
+```{r}
+# Using the colon operator for consecutive integers
+1:10
+
+# Using seq() for more control
+seq(from = 0, to = 1, by = 0.1)
+seq(0, 10, length.out = 5)  # 5 evenly spaced values
+
+# Repeating values
+rep(5, times = 3)
+rep(c(1, 2), each = 3)
+rep(c(1, 2), times = 3)
+```
+
+---
+
+## Basic Functions
+
+Functions are operations that take inputs (arguments) and return outputs.
+
+```{r}
+# Calculate the mean (average)
+mean(c(10, 20, 30, 40, 50))
+
+# Calculate the sum
+sum(1:100)
+
+# Find the minimum and maximum
+min(c(5, 3, 8, 1))
+max(c(5, 3, 8, 1))
+
+# Round numbers
+round(3.14159, digits = 2)
+floor(3.7)  # Round down
+ceiling(3.2)  # Round up
+```
+
+---
+
+## Function Arguments
+
+Functions can have multiple arguments to control their behavior.
+
+```{r}
+# Named arguments
+mean(x = c(1, 2, 3), na.rm = TRUE)
+
+# Positional arguments (order matters)
+round(3.14159, 2)  # Same as round(x = 3.14159, digits = 2)
+
+# Default arguments
+# If you don't specify digits, round() uses digits = 0
+round(3.14159)
+```
+
+---
+
+## Missing Values (NA)
+
+R uses `NA` to represent missing values.
+
+```{r}
+# Vector with missing values
+data <- c(10, NA, 20, 30, NA)
+data
+
+# Many functions have an na.rm argument to remove NAs
+mean(data)               # Returns NA
+mean(data, na.rm = TRUE) # Calculates mean excluding NAs
+
+# Check for missing values
+is.na(data)
+sum(is.na(data))  # Count missing values
+```
+
+---
+
+## Getting Information About Objects
+
+```{r}
+# Create a vector
+numbers <- c(5, 10, 15, 20, 25)
+
+# Get information about the object
+length(numbers)  # How many elements
+class(numbers)   # What type of object
+str(numbers)     # Structure of the object
+summary(numbers) # Summary statistics
+```
+
+---
+
+## Writing Comments
+
+Comments help document your code and explain what it's doing.
+
+```{r}
+# This is a comment - it won't be executed
+x <- 10  # You can put comments at the end of lines too
+
+# Multi-line comments for longer explanations
+# like this one that continues
+# across several lines
+
+2 + 2  # This adds two numbers
+```
+
+<div class="tip">
+<strong>Tip:</strong> Well-commented code is easier to understand, debug, and maintain.
+</div>
+
+---
+
+## Exercise: Basic Commands
+
+Try running these commands in RStudio:
+
+1. Create variables `height` and `width` with values 7 and 5.
+2. Calculate the area of a rectangle using these variables.
+3. Create a vector of the first 10 even numbers.
+4. Calculate the mean, min, and max of this vector.
+5. Create a logical vector testing which numbers in the vector are greater than 10.
+
+---
+
+# Questions? {data-background="#3a0ca3"}
+
+### Next topic: Using Excel and CSV Files
+
+---
+
+## Additional Resources
+
+- [R for Data Science: Basic R](https://r4ds.had.co.nz/workflow-basics.html)
+- [Quick-R: Basic Operations](https://www.statmethods.net/management/operators.html)
+- [DataCamp: Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r)
+- [RStudio Primers](https://rstudio.cloud/learn/primers)
+
+```{js, echo=FALSE}
+// Print PDF setup
+function printPDF() {
+  let link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+  document.getElementsByTagName('head')[0].appendChild(link);
+}
+printPDF();
+```

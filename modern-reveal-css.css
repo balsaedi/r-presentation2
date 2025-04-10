@@ -1,0 +1,634 @@
+/* Modern Custom CSS for Reveal.js R Presentation */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  /* Modern color palette */
+  --primary: #6366f1;         /* Indigo */
+  --primary-light: #818cf8;   /* Light indigo */
+  --primary-dark: #4f46e5;    /* Dark indigo */
+  --secondary: #06b6d4;       /* Cyan */
+  --tertiary: #8b5cf6;        /* Violet */
+  --accent: #ec4899;          /* Pink */
+  --success: #10b981;         /* Emerald */
+  --warning: #f59e0b;         /* Amber */
+  --danger: #ef4444;          /* Red */
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  
+  /* Text colors */
+  --text-dark: var(--neutral-900);
+  --text-light: var(--neutral-700);
+  --text-lighter: var(--neutral-300);
+  
+  /* Background colors */
+  --bg-main: #ffffff;
+  --bg-light: var(--neutral-50);
+  --bg-code: var(--neutral-100);
+  
+  /* Other UI elements */
+  --border: var(--neutral-200);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.04), 0 4px 6px rgba(0, 0, 0, 0.08);
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base styles for the presentation */
+.reveal {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 24px;
+  color: var(--text-dark);
+  background-color: var(--bg-main);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  height: auto;
+  min-height: 100%;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-main);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.reveal.has-dark-background .slides section {
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typography */
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4, 
+.reveal h5, 
+.reveal h6 {
+  margin-top: 0;
+  margin-bottom: 0.8em;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--primary-dark);
+}
+
+.reveal h1 { 
+  font-size: 3em; 
+  background: linear-gradient(90deg, var(--primary-dark), var(--tertiary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.reveal h2 { 
+  font-size: 2.2em; 
+  color: var(--primary);
+}
+
+.reveal h3 { 
+  font-size: 1.6em; 
+  color: var(--tertiary);
+}
+
+.reveal h4 { 
+  font-size: 1.3em; 
+  color: var(--primary-dark);
+}
+
+.reveal h5 { 
+  font-size: 1.1em; 
+  color: var(--text-dark);
+}
+
+.reveal h6 { 
+  font-size: 0.9em; 
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.reveal p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+/* Links */
+.reveal a {
+  color: var(--primary);
+  text-decoration: none;
+  background-image: linear-gradient(transparent 90%, var(--primary-light) 10%);
+  background-size: 0% 100%;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--transition);
+  padding-bottom: 2px;
+}
+
+.reveal a:hover {
+  color: var(--primary-dark);
+  background-size: 100% 100%;
+}
+
+/* Title slide styles */
+.reveal .title-slide {
+  text-align: center;
+}
+
+.reveal .title-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+  opacity: 0.8;
+}
+
+.reveal .title-slide h1,
+.reveal .title-slide h2,
+.reveal .title-slide h3 {
+  color: white;
+  text-align: center;
+}
+
+.reveal .title-slide h1 {
+  font-size: 4em;
+  margin-bottom: 0.3em;
+  background: linear-gradient(135deg, var(--primary-light), var(--tertiary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  }
+}
+
+.reveal .title-slide h2 {
+  font-size: 2em;
+  color: var(--secondary);
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+.reveal .title-slide h3 {
+  color: var(--text-light);
+  font-weight: 400;
+  margin-top: 2em;
+  font-size: 1.4em;
+}
+
+/* Code blocks */
+.reveal pre {
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', monospace;
+  background-color: var(--bg-code);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+  padding: 1.2em;
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+  max-height: none !important;
+  font-size: 0.8em;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.reveal pre:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.reveal code {
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 0.85em;
+  background-color: var(--bg-code);
+  border-radius: var(--radius-sm);
+  padding: 0.2em 0.4em;
+  color: var(--accent);
+}
+
+/* Custom notification boxes */
+.note, .tip, .warning {
+  padding: 1.2em;
+  margin: 1.2em 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  position: relative;
+  padding-left: 3em;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.note:hover, .tip:hover, .warning:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.note::before, .tip::before, .warning::before {
+  font-family: 'Poppins', sans-serif;
+  position: absolute;
+  left: 1.2em;
+  top: 1.2em;
+  font-weight: 600;
+}
+
+.note {
+  background-color: rgba(99, 102, 241, 0.08);
+  border-left: 4px solid var(--primary);
+}
+
+.note::before {
+  content: "ℹ️";
+}
+
+.tip {
+  background-color: rgba(6, 182, 212, 0.08);
+  border-left: 4px solid var(--secondary);
+}
+
+.tip::before {
+  content: "💡";
+}
+
+.warning {
+  background-color: rgba(245, 158, 11, 0.08);
+  border-left: 4px solid var(--warning);
+}
+
+.warning::before {
+  content: "⚠️";
+}
+
+/* Table styling */
+.reveal table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.2em 0;
+  font-size: 0.8em;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.reveal thead {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+}
+
+.reveal th {
+  text-align: left;
+  padding: 1em 1.2em;
+  font-weight: 600;
+}
+
+.reveal td {
+  padding: 0.8em 1.2em;
+  border-top: 1px solid var(--border);
+  transition: background-color var(--transition);
+}
+
+.reveal tr:nth-child(even) {
+  background-color: var(--bg-light);
+}
+
+.reveal tr:hover td {
+  background-color: rgba(99, 102, 241, 0.05);
+}
+
+/* Lists */
+.reveal ul, 
+.reveal ol {
+  padding-left: 1.5em;
+  margin: 0.8em 0;
+}
+
+.reveal li {
+  margin-bottom: 0.4em;
+  line-height: 1.6;
+  position: relative;
+}
+
+.reveal ul li::marker {
+  color: var(--primary);
+}
+
+.reveal ol li::marker {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Images */
+.reveal img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.2em auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.reveal img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Slide numbers */
+.reveal .slide-number {
+  background-color: var(--primary-light);
+  color: white;
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 5px 10px;
+  right: 20px;
+  bottom: 20px;
+}
+
+/* Progress bar */
+.reveal .progress {
+  height: 4px;
+  color: var(--primary);
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.reveal .progress span {
+  background: linear-gradient(90deg, var(--primary), var(--tertiary));
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/* Custom highlight for code */
+.reveal .hljs-keyword,
+.reveal .hljs-selector-tag,
+.reveal .hljs-addition {
+  color: var(--primary-dark);
+  font-weight: 500;
+}
+
+.reveal .hljs-function {
+  color: var(--accent);
+}
+
+.reveal .hljs-string,
+.reveal .hljs-doctag {
+  color: var(--success);
+}
+
+.reveal .hljs-number,
+.reveal .hljs-literal {
+  color: var(--warning);
+}
+
+.reveal .hljs-comment {
+  color: var(--text-lighter);
+  font-style: italic;
+}
+
+/* Print-specific styles */
+@media print {
+  .reveal pre {
+    border: 1px solid var(--border);
+  }
+  
+  .reveal .slides section {
+    height: auto !important;
+    min-height: 0 !important;
+    page-break-inside: avoid !important;
+    box-shadow: none;
+    border: 1px solid var(--border);
+  }
+  
+  .reveal h1 {
+    color: var(--primary-dark) !important;
+    -webkit-text-fill-color: var(--primary-dark);
+    background: none;
+  }
+}
+
+/* Custom PDF button */
+.pdf-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  transition: opacity var(--transition), transform var(--transition);
+  opacity: 0.7;
+}
+
+.pdf-controls:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+.pdf-controls button {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.pdf-controls button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Ensure content fits properly on all slides */
+.reveal .slides section.present {
+  overflow-y: auto !important;
+  top: 0 !important;
+}
+
+/* Make R output look cleaner */
+.reveal .r-output {
+  background-color: var(--bg-light);
+  border-left: 4px solid var(--success);
+  padding: 1.2em;
+  margin: 0.8em 0 1.2em 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 0.8em;
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+}
+
+/* Animations for slide transitions */
+.reveal .slides section {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(20px);
+}
+
+.reveal .slides section.present {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal .slides section.future {
+  transform: translateY(40px);
+}
+
+.reveal .slides section.past {
+  transform: translateY(-40px);
+}
+
+/* Extra styling for specific elements */
+.reveal blockquote {
+  border-left: 4px solid var(--tertiary);
+  background-color: rgba(139, 92, 246, 0.05);
+  padding: 1em 1.5em;
+  margin: 1.2em 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-style: italic;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.reveal blockquote::before {
+  content: """;
+  font-family: Georgia, serif;
+  font-size: 4em;
+  position: absolute;
+  left: -0.2em;
+  top: -0.4em;
+  color: var(--tertiary);
+  opacity: 0.2;
+}
+
+/* Data visualization containers */
+.chart-container {
+  background-color: var(--bg-main);
+  border-radius: var(--radius);
+  padding: 1.5em;
+  box-shadow: var(--shadow);
+  margin: 1.5em 0;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.chart-container:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Keyboard shortcuts styling */
+.reveal kbd {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8em;
+  line-height: 1;
+  padding: 0.2em 0.4em;
+  margin: 0 0.2em;
+  vertical-align: middle;
+}
+
+/* Syntax highlighting */
+.reveal .token.comment,
+.reveal .token.prolog,
+.reveal .token.doctype,
+.reveal .token.cdata {
+  color: var(--text-lighter);
+  font-style: italic;
+}
+
+.reveal .token.punctuation {
+  color: var(--text-light);
+}
+
+.reveal .token.property,
+.reveal .token.tag,
+.reveal .token.boolean,
+.reveal .token.number,
+.reveal .token.constant,
+.reveal .token.symbol,
+.reveal .token.deleted {
+  color: var(--accent);
+}
+
+.reveal .token.selector,
+.reveal .token.attr-name,
+.reveal .token.string,
+.reveal .token.char,
+.reveal .token.builtin,
+.reveal .token.inserted {
+  color: var(--success);
+}
+
+.reveal .token.operator,
+.reveal .token.entity,
+.reveal .token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--warning);
+}
+
+.reveal .token.atrule,
+.reveal .token.attr-value,
+.reveal .token.keyword {
+  color: var(--primary);
+}
+
+.reveal .token.function,
+.reveal .token.class-name {
+  color: var(--tertiary);
+}
+
+.reveal .token.regex,
+.reveal .token.important,
+.reveal .token.variable {
+  color: var(--secondary);
+}
+
+.reveal .token.important,
+.reveal .token.bold {
+  font-weight: bold;
+}
+
+.reveal .token.italic {
+  font-style: italic;
+}
+
+/* Special backgrounds for different slide types */
+[data-background-gradient="linear-gradient(135deg, #6366f1, #4f46e5)"] h1,
+[data-background-gradient="linear-gradient(135deg, #6366f1, #4f46e5)"] h2,
+[data-background-gradient="linear-gradient(135deg, #6366f1, #4f46e5)"] h3,
+[data-background-gradient="linear-gradient(135deg, #6366f1, #4f46e5)"] p {
+  color: white;
+}
